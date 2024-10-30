@@ -1,0 +1,127 @@
+1. Zarządzanie Produktami:
+- Dodawanie Produktu:
+    - Endpoint: POST /api/products
+    - Opis: Dodaje nowy produkt do sklepu.
+    - Body:
+	{
+	 "name": "string",
+	 "description": "string",
+ 	 "ingredients": ["string"],
+ 	 "images": ["string"],
+ 	 "weight": "number",
+ 	 "burnTime": "number",
+ 	 "scents": ["string"],
+ 	 "price": "number",
+ 	 "stock": "number",
+ 	 "categoryId": "string"
+	}
+    - Odpowiedź: Status 201, ID nowego produktu	
+- Edytowanie Produktu:
+    - Endpoint: PUT /api/products/{productId}
+    - Opis: Aktualizuje istniejący produkt.
+    - Body: Jak przy dodawaniu produktu.
+    - Odpowiedź: Status 200, zaktualizowane dane produktu
+- Usuwanie Produktu:
+    - Endpoint: DELETE /api/products/{productId}
+    - Opis: Usuwa produkt z oferty sklepu.
+    - Odpowiedź: Status 204 (bez treści)
+- Zarządzanie Kategoriami:
+    - Endpoint: POST /api/categories
+    - Opis: Dodaje nową kategorię produktów.
+    - Body:
+	{
+	 "name": "string",
+	 "description": "string"
+	}
+    - Odpowiedź: Status 201, ID nowej kategorii
+
+2. Obsługa Zamówień:
+- Tworzenie Zamówienia:
+    - Endpoint: POST /api/orders
+    - Opis: Tworzy nowe zamówienie po złożeniu przez klienta.
+    - Body: 	{
+ 	 "customerId": "string",
+  	 "products": [
+    	 {
+      	 	"productId": "string",
+       		"quantity": "number"
+    	 }
+  	 ],
+  	 "shippingOption": "string",
+  	 "paymentMethod": "string"
+	}
+    - Odpowiedź: Status 201, numer zamówienia i status „Oczekujące”
+- Śledzenie Statusu Zamówienia:
+    - Endpoint: GET /api/orders/{orderId}
+    - Opis: Pobiera szczegóły zamówienia i jego aktualny status.
+    - Odpowiedź: Status 200, szczegóły zamówienia i status
+    - Aktualizacja Statusu Zamówienia (dla Administratora)
+    - Endpoint: PUT /api/orders/{orderId}/status
+    - Opis: Aktualizuje status zamówienia (np. na „W trakcie realizacji”, „Wysłane”, „Dostarczone”).
+    - Body:
+	{
+	 "status": "string"
+	}
+    - Odpowiedź: Status 200, zaktualizowany status zamówienia
+- Dodawanie Opcji Wysyłki
+    - Endpoint: POST /api/shipping-options
+    - Opis: Dodaje opcję wysyłki, np. kurier, paczkomat.
+    - Body: 	{
+	 "name": "string",
+	 "price": "number",
+	 "estimatedDelivery": "string"
+	}
+    - Odpowiedź: Status 201, ID opcji wysyłki
+
+3. Zarządzanie Klientami:
+- Rejestracja
+    - Endpoint: POST /api/customers/register
+    - Opis: Rejestracja nowego klienta.
+    - Body:
+	{
+	 "email": "string",
+ 	 "password": "string",
+	 "name": "string",
+ 	 "address": "string",
+ 	 "phone": "string"
+	}
+    - Odpowiedź: Status 201, ID klienta
+- Logowanie
+    - Endpoint: POST /api/customers/login
+    - Opis: Logowanie klienta.
+    - Body:
+	{
+	 "email": "string",
+	 "password": "string"
+	}
+    - Odpowiedź: Status 200, token uwierzytelnienia
+- Opinie Produktów
+    - Endpoint: POST /api/products/{productId}/reviews
+    - Opis: Dodaje opinię i ocenę produktu.
+    - Body:
+	{
+	 "customerId": "string",
+ 	 "rating": "number",
+	 "comment": "string"
+	}
+    - Odpowiedź: Status 201, ID opinii
+
+4. Zarządzanie Zapasami:
+- Śledzenie Stanu Magazynowego
+    - Endpoint: GET /api/products/{productId}/stock
+    - Opis: Pobiera aktualny stan magazynowy produktu.
+    - Odpowiedź: Status 200, liczba dostępnych sztuk
+- Alert o Niskim Stanie Zapasów
+    - Endpoint: GET /api/products/low-stock
+    - Opis: Pobiera listę produktów z niskim stanem magazynowym.
+    - Odpowiedź: Status 200, lista produktów
+
+5. Raportowanie i Analiza:
+- Generowanie Raportów Sprzedaży
+    - Endpoint: GET /api/reports/sales
+    - Opis: Generuje raport sprzedażowy dla administratora.
+    - Parametry:
+	startDate: Data początkowa (opcjonalnie)
+	endDate: Data końcowa (opcjonalnie)
+    - Odpowiedź: Status 200, dane raportu (np. najczęściej sprzedawane produkty, dochodowość)
+

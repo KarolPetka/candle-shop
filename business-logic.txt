@@ -1,0 +1,21 @@
+1. Zarządzanie Produktami:
+- Dodawanie Produktów: Administrator sklepu może dodawać nowe produkty, wprowadzając szczegóły, takie jak: nazwa, opis, składniki, zdjęcia, waga, czas palenia, dostępne zapachy, cena i dostępna liczba sztuk.
+- Edycja i Usuwanie Produktów: Administrator ma możliwość edytowania istniejących produktów lub usuwania ich z oferty sklepu.
+- Zarządzanie Kategoriami: Produkty mogą być organizowane w kategorie, np. świece sojowe, świece zapachowe, świece ozdobne itp., aby ułatwić klientom wyszukiwanie.
+
+2. Obsługa Zamówień:
+- Procesowanie Zamówień: Po złożeniu zamówienia przez klienta system generuje numer zamówienia, a jego status jest ustawiany na „Oczekujące”. Po potwierdzeniu płatności zamówienie przechodzi do „Realizacji”.
+- Śledzenie Statusu Zamówienia: Klienci mogą sprawdzać status swojego zamówienia w panelu użytkownika. System automatycznie aktualizuje status, np. „W trakcie realizacji”, „Wysłane”, „Dostarczone”.
+- Płatności: Sklep powinien obsługiwać różne formy płatności, takie jak karty płatnicze, przelewy bankowe, płatności online.
+- Wysyłka: Administrator definiuje opcje dostawy, takie jak przesyłki kurierskie, paczkomaty, odbiór osobisty itp. System oblicza koszt dostawy na podstawie wybranej opcji oraz lokalizacji klienta.
+
+3. Zarządzanie Klientami:
+- Rejestracja i Logowanie: Klienci mają możliwość rejestracji i logowania się do konta, gdzie mogą przeglądać historię zamówień, zapisywać ulubione produkty oraz zarządzać swoimi danymi.
+- Opinie Produktów: Klienci mogą zostawiać opinie i oceny produktów, co pomaga innym użytkownikom w wyborze oraz buduje wiarygodność sklepu.
+
+4. Zarządzanie Zapasami:
+- Śledzenie Stanu Magazynowego: System monitoruje stan magazynowy produktów i automatycznie blokuje sprzedaż produktów, które są niedostępne.
+- Alerty o Niskim Stanie Zapasów: Administrator otrzymuje powiadomienia o produktach z niskim stanem magazynowym, aby zapewnić terminowe uzupełnienie zapasów.
+
+5. Raportowanie i Analiza:
+- Analiza Sprzedaży: System generuje raporty sprzedażowe, które umożliwiają administratorowi śledzenie najczęściej sprzedawanych produktów, dochodowość oraz koszty operacyjne.

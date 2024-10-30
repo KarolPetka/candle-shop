@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      - DATASOURCE_URL=jdbc:mysql://mysql:3306/candle_shop_db
+      - DATASOURCE_USERNAME=backend_user
+      - DATASOURCE_PASSWORD=pass
+      - JWT_SECRET=secret-key
+      - JWT_EXPIRATION=86400000
+    networks:
+      - database-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: candle_shop_db
+      MYSQL_USER: backend_user
+      MYSQL_PASSWORD: pass
+    ports:
+      - "3306:3306"
+    networks:
+      - database-network
+    volumes:
+      - database_volume:/var/lib/mysql
+
+networks:
+  database-network:
+
+volumes:
+  database_volume:
