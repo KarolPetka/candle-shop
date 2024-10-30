@@ -1,5 +1,7 @@
 version: '3.8'
 
+name: candle-shop
+
 services:
   app:
     build:
@@ -14,7 +16,7 @@ services:
       - DATASOURCE_URL=jdbc:mysql://mysql:3306/candle_shop_db
       - DATASOURCE_USERNAME=backend_user
       - DATASOURCE_PASSWORD=pass
-      - JWT_SECRET=secret-key
+      - JWT_SECRET=your-very-long-secret-key-32-characters
       - JWT_EXPIRATION=86400000
     networks:
       - database-network
