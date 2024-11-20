@@ -6,7 +6,7 @@ COPY pom.xml /app/
 COPY src /app/src
 
 RUN apt-get update && apt-get install -y maven
-RUN mvn -B clean package -DskipTests
+RUN mvn -T 1.5C clean install -Dmaven.test.skip -DskipTests
 
 FROM openjdk:17-jdk-slim
 
