@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/product")
 class ProductController(private val productService: ProductService) {
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    fun getProduct(): List<Product> = productService.getProduct()
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun addProduct(@RequestBody product: Product): Long = productService.addProduct(product).id
